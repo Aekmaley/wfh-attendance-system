@@ -1,0 +1,24 @@
+:root {
+  --primary: #0d47a1;
+  --primary-dark: #08306b;
+  --soft-bg: #f4f7fb;
+}
+body { font-family: Tahoma, 'Noto Sans Thai', sans-serif; }
+.login-bg {
+  background: linear-gradient(135deg, #0d47a1 0%, #0b5ed7 55%, #e9eef7 55%, #f7f9fc 100%);
+}
+.app-bg { background: var(--soft-bg); }
+.logo-circle {
+  width: 74px; height: 74px; border-radius: 50%; margin: 0 auto;
+  display: grid; place-items: center; background: var(--primary); color: #fff; font-size: 2rem;
+}
+.summary-card { border-left: 5px solid var(--primary); }
+.card { border-radius: 1rem; }
+.table td, .table th { white-space: nowrap; }
+.table td.text-wrap { white-space: normal; }
+.navbar.bg-primary, .btn-primary { background-color: var(--primary) !important; border-color: var(--primary) !important; }
+.btn-outline-primary { color: var(--primary); border-color: var(--primary); }
+.text-primary { color: var(--primary) !important; }
+@media (max-width: 768px) {
+  .display-6 { font-size: 1.7rem; }
+}

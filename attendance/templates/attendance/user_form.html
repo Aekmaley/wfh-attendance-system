@@ -1,0 +1,25 @@
+{% extends 'attendance/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-xl-7">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white fw-semibold">{{ title }}</div>
+      <div class="card-body">
+        <form method="post" class="row g-3">
+          {% csrf_token %}
+          <div class="col-md-6"><label class="form-label">Username</label>{{ form.username }}</div>
+          <div class="col-md-6"><label class="form-label">Email</label>{{ form.email }}</div>
+          <div class="col-md-6"><label class="form-label">ชื่อ-นามสกุล</label><input type="text" name="full_name" value="{{ form.initial.full_name|default:'' }}" class="form-control" required></div>
+          <div class="col-md-6"><label class="form-label">ตำแหน่ง</label><input type="text" name="position" value="{{ form.initial.position|default:'' }}" class="form-control"></div>
+          <div class="col-md-6"><label class="form-label">หน่วยงาน</label><select name="department" class="form-select"><option value="">---------</option>{% for d in form.fields.department.queryset %}<option value="{{ d.id }}" {% if form.initial.department and form.initial.department.id == d.id %}selected{% endif %}>{{ d.name }}</option>{% endfor %}</select></div>
+          <div class="col-md-6"><label class="form-label">รหัสผ่านใหม่ (ถ้าต้องการเปลี่ยน)</label><input type="password" name="password" class="form-control"></div>
+          <div class="col-md-3"><label class="form-label">สิทธิ์ Admin</label><div class="form-check form-switch mt-2">{{ form.is_staff }}</div></div>
+          <div class="col-md-3"><label class="form-label">เปิดใช้งาน</label><div class="form-check form-switch mt-2">{{ form.is_active }}</div></div>
+          <div class="col-12 d-flex gap-2"><button class="btn btn-primary">บันทึก</button><a href="{% url 'user_management' %}" class="btn btn-outline-secondary">ยกเลิก</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

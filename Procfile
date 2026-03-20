@@ -1,0 +1,1 @@
+web: gunicorn wfh_system.wsgi
